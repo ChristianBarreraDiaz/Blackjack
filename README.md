@@ -1,11 +1,11 @@
 
 # Blackjack
 
-This app is a challenge im trying
+This app is a full Blackjack game.
 
-It shows the result of the operation.
+It is on development.
 
-It is no deployed yet //You can try this App here:  [Web App](https://relaxed-kulfi-0f17d2.netlify.app)
+It is no deployed yet. 
 
 ## Features
 
