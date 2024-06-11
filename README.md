@@ -3,7 +3,7 @@
 
 This app is a full Blackjack game.
 
-It is on development.
+It is in development.
 
 It is no deployed yet. 
 
