@@ -1,35 +1,59 @@
-// 1. Create two variables, firstCard and secondCard. 
-// Set their values to a random number between 2-11
-let firstCard=5
-let secondCard=9
-let thirdCard=6
-// 2. Create a variable, sum, and set it to the sum of the two cards
-let sum= firstCard + secondCard
 
-function resultado(){
-   // resultadoEl.textContent=sum
-    if (sum<21){
-        suma.textContent= "¿Quieres otra carta? 🤠"
-    }else if (sum === 21){
-        suma.textContent= "Felicidades, Ganaste!!! 🥳"
-    }else if (sum>21){
-        suma.textContent= "Estas fuera del juego 🥲"
+let sum=0
+let cartasEl=[] //Array de cartas
+let message ="" //Mensaje principal estado del juego
+let cartas= document.getElementById("cartasEl") //Muestra el Array de acartas en html cartasEl
+let sumaEl=document.getElementById("suma")
+let enJuego= false
+let blackJack= false
+
+
+function numeroRandom(){
+    let randomNumber= Math.floor(Math.random()*13)+1
+    if (randomNumber>10){
+        return 10
+    }else if (randomNumber===1){
+        return 11
+    }else{
+        return randomNumber
     }
+}
+
+function pedirCartas(){
+    enJuego= true
+    blackJack= false
+    let firstCard=numeroRandom()
+    let secondCard=numeroRandom()
+    sum= firstCard + secondCard //Suma de las cartas 
+    cartasEl=[firstCard, secondCard] //Array de cartas
+    estado()
+}
+
+function estado(){
+    cartas.textContent="Cartas: "//textContent presenta un mensaje en cartas
+    for(let i=0; i<cartasEl.length; i+=1){
+        cartas.textContent+=cartasEl[i]+" "
+    }
+    sumaEl.textContent="Suma: "+ sum
+    if (sum<21){
+        message= "¿Quieres otra carta?"
+    }else if (sum === 21){
+        message= "Felicidades, Ganaste!"
+        blackJack= true
+    }else if (sum>21){
+        message= "Estas fuera del juego"
+        enJuego= false
+    }
+    document.getElementById("message-el").textContent=message
 }
 
 function otraCarta(){
-    document.getElementById("carta3").textContent=thirdCard
-    if (sum+thirdCard!=21){
-        suma.textContent="Estas fuera del juego 🥲"
-    }else if(sum+thirdCard===21){
-        suma.textContent= "Felicidades, Ganaste!!! 🥳"
+    if(enJuego===true && blackJack===false){
+        let thirdCard=numeroRandom()
+        sum+=thirdCard
+        cartasEl.push(thirdCard)
+        estado()
     }
 }    
 
-
-function pedirCartas(){
-     document.getElementById("carta1").textContent=firstCard
-     document.getElementById("carta2").textContent=secondCard
-     resultado()
-}
 
